@@ -2,6 +2,7 @@ package ru.opiti.technics.dao;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import ru.opiti.technics.dbConfig.HibernateConnector;
 import ru.opiti.technics.model.Technics;
 
@@ -50,4 +51,51 @@ public class TechnicsDAO {
             session.close();
         }
     }
+
+    public void updateTechnics(Technics technics){
+        Session session = null;
+        try{
+            session = HibernateConnector.getInstance().getSession();
+            session.saveOrUpdate(technics);
+            session.flush();
+        } catch(Exception ex){
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public Technics addTechnics(Technics technics){
+        Session session = null;
+        Transaction transaction = null;
+        try{
+            session = HibernateConnector.getInstance().getSession();
+            System.out.println("session: " + session);
+            transaction = session.beginTransaction();
+            session.save(technics);
+            transaction.commit();
+            return technics;
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public void deleteTechnics(int id){
+        Session session = null;
+        try{
+            session = HibernateConnector.getInstance().getSession();
+            Transaction beginTransaction = session.beginTransaction();
+            Query createQuery = session.createQuery("delete from Technics t where t.id =: id");
+            createQuery.setParameter("id", id);
+            createQuery.executeUpdate();
+            beginTransaction.commit();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+
 }

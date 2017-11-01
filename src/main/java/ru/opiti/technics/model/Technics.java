@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "technics")
+@Table(name = "alltechnics")
 public class Technics implements Serializable {
 
     private static final long serialVersionUID = 3090254119266881638L;
@@ -32,6 +32,8 @@ public class Technics implements Serializable {
         this.comment = comment;
         this.date = date;
     }
+
+    public Technics(){}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,7 +91,7 @@ public class Technics implements Serializable {
         this.holder = holder;
     }
 
-    @Column(name = "owner")
+    @Column(name = "property_owner")
     public String getOwner() {
         return owner;
     }
@@ -98,7 +100,7 @@ public class Technics implements Serializable {
         this.owner = owner;
     }
 
-    @Column(name = "comment")
+    @Column(name = "description")
     public String getComment() {
         return comment;
     }
@@ -114,5 +116,20 @@ public class Technics implements Serializable {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Technics{" +
+                "id=" + id +
+                ", deviceType='" + deviceType + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", serialNumber='" + serialNumber + '\'' +
+                ", inventoryNumber='" + inventoryNumber + '\'' +
+                ", holder='" + holder + '\'' +
+                ", owner='" + owner + '\'' +
+                ", comment='" + comment + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 }
