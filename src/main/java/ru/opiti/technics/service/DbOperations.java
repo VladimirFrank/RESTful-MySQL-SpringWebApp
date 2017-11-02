@@ -9,19 +9,6 @@ public class DbOperations {
 
     TechnicsDAO technicsDAO = new TechnicsDAO();
 
-    public static void main(String[] args){
-        DbOperations dbOperations = new DbOperations();
-        Technics createTechnics = TechnicsDAO
-
-        List<Technics> technicsList = dbOperations.getTechnicsList();
-//        if(technicsList != null){
-//            for(Technics technics : technicsList){
-//                System.out.println("Holder: " + technics.getHolder() + "\n");
-//            }
-//        }
-        System.out.println();
-    }
-
     public Technics createTechnics(){
         Technics t = new Technics();
         t.setDeviceType("Девайс из hibernate");
