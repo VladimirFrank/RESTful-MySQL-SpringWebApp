@@ -33,6 +33,10 @@ public class Technics implements Serializable {
         this.date = date;
     }
 
+    public Technics(String holder){
+        this.holder = holder;
+    }
+
     public Technics(){}
 
     @Id

@@ -19,12 +19,11 @@
     </div>
 
     <div>
+
+        <p th:text="'Holder: ' + ${holder} + '!'"></p>
+
         <table>
-            <th:block th:each="technics : ${allTechnics}">
-                <tr>
-                    <td th:text="${technics.holder}"></td>
-                </tr>
-            </th:block>
+
         </table>
     </div>
 
