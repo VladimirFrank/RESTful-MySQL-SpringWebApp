@@ -2,8 +2,12 @@ package ru.opiti.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.opiti.technics.dao.TechnicsDAO;
+import ru.opiti.technics.model.Technics;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,13 +17,17 @@ import java.util.Map;
 @Controller
 public class WelcomeController {
 
-    @Value("${welcome.message:test}")
-    private String message = "Hello!";
+    private TechnicsDAO technicsDAO;
+
+    @Value("${technicsList}")
+    private List<Technics> allTechnics;
 
     @RequestMapping("/")
-    public String welcome(Map<String, Object> model){
-        model.put("message", this.message);
-        return "welcome";
+    public String welcome(ModelMap model){
+        technicsDAO = new TechnicsDAO();
+        allTechnics = technicsDAO.listTechnics();
+        model.addAttribute("allTechnics", allTechnics);
+        return "/index";
     }
 
 }
