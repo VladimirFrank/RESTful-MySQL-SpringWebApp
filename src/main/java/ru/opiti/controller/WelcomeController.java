@@ -9,11 +9,6 @@ import ru.opiti.technics.model.Technics;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * Created by sbt-filippov-vv on 02.11.2017.
- */
-
 @Controller
 public class WelcomeController {
 
@@ -24,16 +19,16 @@ public class WelcomeController {
 
     @RequestMapping("/")
     public String welcome(ModelMap model){
-//        technicsDAO = new TechnicsDAO();
-//        allTechnics = technicsDAO.listTechnics();
-//        model.addAttribute("allTechnics", allTechnics);
-//
-        allTechnics = new ArrayList<Technics>();
-        allTechnics.add(new Technics("Ivan Petrov"));
-        allTechnics.add(new Technics("Semen Slepakov"));
-        allTechnics.add(new Technics("Dno Muchnoe"));
-        allTechnics.add(new Technics("Mosey Kotov"));
-        model.addAttribute("holder", allTechnics.get(0).getHolder());
+        technicsDAO = new TechnicsDAO();
+        allTechnics = technicsDAO.listTechnics();
+        model.addAttribute("holder", allTechnics.get(10).getHolder());
+
+//        allTechnics = new ArrayList<Technics>();
+//        allTechnics.add(new Technics("Ivan Petrov"));
+//        allTechnics.add(new Technics("Semen Slepakov"));
+//        allTechnics.add(new Technics("Dno Muchnoe"));
+//        allTechnics.add(new Technics("Mosey Kotov"));
+//        model.addAttribute("holder", allTechnics.get(0).getHolder());
         return "/index";
     }
 
