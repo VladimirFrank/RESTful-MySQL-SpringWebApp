@@ -1,0 +1,21 @@
+h1, h2, h3{
+    font-size:16px;
+    color: #696969;
+}
+
+body{
+
+    width: 80%;
+
+}
+
+#techTable{
+    border: 2px solid #000;
+
+}
+
+.tableRow td{
+    border: 1px solid #000;
+    border-collapse: collapse;
+
+}

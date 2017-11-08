@@ -1,5 +1,7 @@
 package ru.opiti.technics.model;
 
+import org.springframework.stereotype.Controller;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -15,22 +17,24 @@ public class Technics implements Serializable {
     private String serialNumber;
     private String inventoryNumber;
     private String holder;
-    private String owner;
-    private String comment;
+    private String propertyOwner;
+    private String description;
     private String date;
+    private String location;
 
     public Technics(String deviceType, String deviceName,
                     String serialNumber, String inventoryNumber,
-                    String holder, String owner, String comment,
+                    String holder, String propertyOwner, String description,
                     String date){
         this.deviceType = deviceType;
         this.deviceName = deviceName;
         this.serialNumber = serialNumber;
         this.inventoryNumber = inventoryNumber;
         this.holder = holder;
-        this.owner = owner;
-        this.comment = comment;
+        this.propertyOwner = propertyOwner;
+        this.description = description;
         this.date = date;
+
     }
 
     public Technics(String holder){
@@ -96,21 +100,21 @@ public class Technics implements Serializable {
     }
 
     @Column(name = "property_owner")
-    public String getOwner() {
-        return owner;
+    public String getPropertyOwner() {
+        return propertyOwner;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setPropertyOwner(String propertyOwner) {
+        this.propertyOwner = propertyOwner;
     }
 
     @Column(name = "description")
-    public String getComment() {
-        return comment;
+    public String getDescription() {
+        return description;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Column(name = "date")
@@ -122,6 +126,15 @@ public class Technics implements Serializable {
         this.date = date;
     }
 
+    @Column(name = "location")
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     @Override
     public String toString() {
         return "Technics{" +
@@ -131,8 +144,8 @@ public class Technics implements Serializable {
                 ", serialNumber='" + serialNumber + '\'' +
                 ", inventoryNumber='" + inventoryNumber + '\'' +
                 ", holder='" + holder + '\'' +
-                ", owner='" + owner + '\'' +
-                ", comment='" + comment + '\'' +
+                ", owner='" + propertyOwner + '\'' +
+                ", description='" + description + '\'' +
                 ", date='" + date + '\'' +
                 '}';
     }

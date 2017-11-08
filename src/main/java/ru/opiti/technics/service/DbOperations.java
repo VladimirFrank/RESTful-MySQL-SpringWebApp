@@ -16,8 +16,8 @@ public class DbOperations {
         t.setSerialNumber("00000AAA");
         t.setInventoryNumber("00001111");
         t.setHolder("Яков Яков Якович");
-        t.setOwner("Сбертех.");
-        t.setComment("HIBERNATE!");
+        t.setPropertyOwner("Сбертех.");
+        t.setDescription("HIBERNATE!");
         t.setDate("01.01.1970");
         technicsDAO.addTechnics(t);
         return t;
@@ -25,7 +25,7 @@ public class DbOperations {
 
     public void updateTechnics(Integer id){
         Technics technics = technicsDAO.findTechnicsById(id);
-        technics.setOwner("Мистер ХХХ");
+        technics.setPropertyOwner("Мистер ХХХ");
         technicsDAO.updateTechnics(technics);
         System.out.println("Update success!");
     }

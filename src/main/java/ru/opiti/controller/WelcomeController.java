@@ -1,7 +1,9 @@
 package ru.opiti.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.opiti.technics.dao.TechnicsDAO;
 import ru.opiti.technics.model.Technics;
@@ -18,10 +20,11 @@ public class WelcomeController {
     private List<Technics> allTechnics;
 
     @RequestMapping("/")
-    public String welcome(ModelMap model){
+    public String welcome(Model model){
         technicsDAO = new TechnicsDAO();
         allTechnics = technicsDAO.listTechnics();
-        model.addAttribute("holder", allTechnics.get(10).getHolder());
+//        model.addAttribute("holder", allTechnics.get(10).getHolder());
+        model.addAttribute("listOfTechnics", allTechnics);
 
 //        allTechnics = new ArrayList<Technics>();
 //        allTechnics.add(new Technics("Ivan Petrov"));
@@ -31,5 +34,7 @@ public class WelcomeController {
 //        model.addAttribute("holder", allTechnics.get(0).getHolder());
         return "/index";
     }
+
+
 
 }
