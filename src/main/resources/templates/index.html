@@ -7,36 +7,19 @@
 
 </head>
 <body>
-
-<div class="container">
-
-    <div class="starter-template">
-
-    </div>
-
     <div>
+        <table>
+            <tr>
+                <td><textarea id="fioInput" cols="40" placeholder="Введете ФИО"></textarea></td>
+                <td><textarea id="serialNumberInput" cols="40" placeholder="Введете S/N"></textarea></td>
 
-
-        <table id="techTable">
-            <tr th:each="technics : ${listOfTechnics}" class="tableRow">
-                <td th:text="${technics.id}">id</td>
-                <td th:text="${technics.deviceType}">name</td>
-                <td th:text="${technics.deviceName}">device name</td>
-                <td th:text="${technics.serialNumber}">serial_number</td>
-                <td th:text="${technics.inventoryNumber}">inventory_number</td>
-                <td th:text="${technics.holder}">holder</td>
-                <td th:text="${technics.propertyOwner}">property_owner</td>
-                <td th:text="${technics.description}">description</td>
-                <td th:text="${technics.date}">date</td>
-                <td th:text="${technics.location}">location</td>
-
+            </tr>
+            <tr>
+                <td><a href="/allTechnics"><input type="button" value="Найти" /></a></td>
+                <td><a href="/allTechnics"><input type="button" value="Найти" /></a></td>
             </tr>
         </table>
     </div>
-
-</div>
-<!-- /.container -->
-
 
 
 </body>

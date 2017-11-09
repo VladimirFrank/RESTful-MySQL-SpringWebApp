@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Техника</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css"  />
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="starter-template">
+
+    </div>
+
+    <div>
+        <table>
+
+        </table>
+    </div>
+
+    <div>
+        <table id="techTable">
+            <tr th:each="technics : ${listOfTechnics}" class="tableRow">
+                <td th:text="${technics.id}">id</td>
+                <td th:text="${technics.deviceType}">name</td>
+                <td th:text="${technics.deviceName}">device name</td>
+                <td th:text="${technics.serialNumber}">serial_number</td>
+                <td th:text="${technics.inventoryNumber}">inventory_number</td>
+                <td th:text="${technics.holder}">holder</td>
+                <td th:text="${technics.propertyOwner}">property_owner</td>
+                <td th:text="${technics.description}">description</td>
+                <td th:text="${technics.date}">date</td>
+                <td th:text="${technics.location}">location</td>
+
+            </tr>
+        </table>
+    </div>
+
+</div>
+<!-- /.container -->
+
+
+
+</body>
+</html>

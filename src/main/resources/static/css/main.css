@@ -1,3 +1,7 @@
+html{
+    font-family: Verdana, Georgia, sans-serif;
+}
+
 h1, h2, h3{
     font-size:16px;
     color: #696969;

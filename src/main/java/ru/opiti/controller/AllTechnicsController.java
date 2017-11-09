@@ -12,27 +12,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class WelcomeController {
+public class AllTechnicsController {
 
     private TechnicsDAO technicsDAO;
 
 //    @Value("${technicsList.holder}")
     private List<Technics> allTechnics;
 
-    @RequestMapping("/")
-    public String welcome(Model model){
-        technicsDAO = new TechnicsDAO();
-        allTechnics = technicsDAO.listTechnics();
+    @RequestMapping("/allTechnics")
+    public String getAllTechnics(Model model){
+        allTechnics = new TechnicsDAO().listTechnics();
 //        model.addAttribute("holder", allTechnics.get(10).getHolder());
         model.addAttribute("listOfTechnics", allTechnics);
-
-//        allTechnics = new ArrayList<Technics>();
-//        allTechnics.add(new Technics("Ivan Petrov"));
-//        allTechnics.add(new Technics("Semen Slepakov"));
-//        allTechnics.add(new Technics("Dno Muchnoe"));
-//        allTechnics.add(new Technics("Mosey Kotov"));
-//        model.addAttribute("holder", allTechnics.get(0).getHolder());
-        return "/index";
+        return "/allTechnics";
     }
 
 
