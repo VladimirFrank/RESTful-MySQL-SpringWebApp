@@ -10,16 +10,29 @@
     <div>
         <table>
             <tr>
-                <td><textarea id="fioInput" cols="40" placeholder="Введете ФИО"></textarea></td>
-                <td><textarea id="serialNumberInput" cols="40" placeholder="Введете S/N"></textarea></td>
-
+                <td><textarea id="fioInput" cols="40" placeholder="Введите ФИО"></textarea></td>
+                <td><textarea id="serialNumberInput" cols="40" placeholder="Введите S/N"></textarea></td>
             </tr>
             <tr>
-                <td><a href="/allTechnics"><input type="button" value="Найти" /></a></td>
+                <td><a href=""><input id="fioButton" type="button" value="Найти" /></a></td>
+                <script>
+                    var fioButton = document.getElementById('fioButton');
+
+                    function printFio(){
+                        var fio = document.getElementById('fioInput').value;
+                        alert(fio);
+                    };
+                    fioButton.addEventListener("click", printFio);
+
+                </script>
                 <td><a href="/allTechnics"><input type="button" value="Найти" /></a></td>
             </tr>
         </table>
     </div>
+
+    <script>
+        document.querySelector("#fioInput")
+    </script>
 
 
 </body>

@@ -31,6 +31,29 @@ public class TechnicsDAO {
         }
     }
 
+
+    // TODO Добавить поиск в БД по ФИО держателя техники
+    public List<Technics> findTechnicsByFio(String fio){
+        Session session = null;
+        try{
+            session = HibernateConnector.getInstance().getSession();
+            Query query = session.createQuery("FROM Technics T WHERE T.holder = fio");
+
+            List queryList = query.list();
+            if(queryList == null && queryList.isEmpty()){
+                return null;
+            } else{
+                System.out.println("list " + queryList);
+                return (List<Technics>) queryList;
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+
     public Technics findTechnicsById(int id){
         Session session = null;
         try{
