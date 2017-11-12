@@ -16,15 +16,13 @@ public class AllTechnicsController {
 
     private TechnicsDAO technicsDAO;
 
-//    @Value("${technicsList.holder}")
     private List<Technics> allTechnics;
 
-    @RequestMapping("/allTechnics")
+    @RequestMapping("/technicsList")
     public String getAllTechnics(Model model){
         allTechnics = new TechnicsDAO().listTechnics();
-//        model.addAttribute("holder", allTechnics.get(10).getHolder());
         model.addAttribute("listOfTechnics", allTechnics);
-        return "/allTechnics";
+        return "/technicsList";
     }
 
 

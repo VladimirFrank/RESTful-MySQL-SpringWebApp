@@ -8,32 +8,21 @@
 </head>
 <body>
     <div>
-        <table>
-            <tr>
-                <td><textarea id="fioInput" cols="40" placeholder="Введите ФИО"></textarea></td>
-                <td><textarea id="serialNumberInput" cols="40" placeholder="Введите S/N"></textarea></td>
-            </tr>
-            <tr>
-                <td><a href=""><input id="fioButton" type="button" value="Найти" /></a></td>
-                <script>
-                    var fioButton = document.getElementById('fioButton');
 
-                    function printFio(){
-                        var fio = document.getElementById('fioInput').value;
-                        alert(fio);
-                    };
-                    fioButton.addEventListener("click", printFio);
-
-                </script>
-                <td><a href="/allTechnics"><input type="button" value="Найти" /></a></td>
-            </tr>
-        </table>
+        <!-- TODO Добавить регулярные выражения для проверки ввода! -->
+        <form method="POST" action="/getByFio">
+            <textarea id="fioInput" placeholder="Введите ФИО" cols="70" rows="2"></textarea>
+            <input type="submit">
+        </form>
+        <form method="POST" action="/getBySerialNumber">
+            <textarea id="snInput" placeholder="Введите S/N" cols="70" rows="2"></textarea>
+            <input type="submit">
+        </form>
     </div>
 
-    <script>
-        document.querySelector("#fioInput")
-    </script>
-
+    <div>
+        <a href="technicsList.html">Показать весь список</a>
+    </div>
 
 </body>
 </html>
