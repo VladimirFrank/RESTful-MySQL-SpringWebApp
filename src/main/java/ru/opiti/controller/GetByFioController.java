@@ -14,8 +14,6 @@ import java.util.List;
 @Controller
 public class GetByFioController {
 
-    private TechnicsDAO technicsDAO;
-
     private List<Technics> technicsListByFio;
 
     @RequestMapping(value = "/getByFio")

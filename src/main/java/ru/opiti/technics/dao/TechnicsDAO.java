@@ -31,14 +31,39 @@ public class TechnicsDAO {
         }
     }
 
-
-    // TODO Добавить поиск в БД по ФИО держателя техники
+    // TODO TEST IT!
+    // TODO добавить поиск по части ФИО (по фамилии, например)
+    // получение списка техники по ФИО держателя
     public List<Technics> findTechnicsByFio(String fio){
         Session session = null;
         try{
             session = HibernateConnector.getInstance().getSession();
             Query query = session.createQuery("FROM Technics WHERE holder = :fio");
             query.setParameter("fio", fio);
+            List queryList = query.list();
+            if(queryList == null && queryList.isEmpty()){
+                return null;
+            } else{
+                System.out.println("list " + queryList);
+                return (List<Technics>) queryList;
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+
+    // TODO TEST IT!
+    // TODO добавить поиск по части серийного номера
+    // Получение списка техники по серийному номеру (возможно несколько позиций)
+    public List<Technics> findTechnicsBySerialNumber(String sn){
+        Session session = null;
+        try{
+            session = HibernateConnector.getInstance().getSession();
+            Query query = session.createQuery("FROM Technics WHERE serialNumber = :sn");
+            query.setParameter("serialNumber", sn);
             List queryList = query.list();
             if(queryList == null && queryList.isEmpty()){
                 return null;
