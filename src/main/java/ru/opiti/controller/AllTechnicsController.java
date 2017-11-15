@@ -14,8 +14,6 @@ import java.util.List;
 @Controller
 public class AllTechnicsController {
 
-    private TechnicsDAO technicsDAO;
-
     private List<Technics> allTechnics;
 
     @RequestMapping("/technicsList")
@@ -23,6 +21,11 @@ public class AllTechnicsController {
         allTechnics = new TechnicsDAO().listTechnics();
         model.addAttribute("listOfTechnics", allTechnics);
         return "/technicsList";
+    }
+
+    @RequestMapping("/")
+    public String getIndexPage(){
+        return "/index";
     }
 
 

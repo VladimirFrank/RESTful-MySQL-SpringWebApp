@@ -17,7 +17,8 @@ public class GetByFioController {
     private List<Technics> technicsListByFio;
 
     @RequestMapping(value = "/getByFio")
-    public String getByFio(@RequestParam(value = "fioInput") String fio, Model model){
+    public String getByFio(@RequestParam(value = "fioInput") String fio,
+                                                            Model model){
         technicsListByFio = new TechnicsDAO().findTechnicsByFio(fio);
         model.addAttribute("listOfTechnics", technicsListByFio);
         return "/technicsList";
