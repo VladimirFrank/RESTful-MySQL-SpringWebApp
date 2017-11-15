@@ -17,9 +17,12 @@ public class GetByFioController {
     private List<Technics> technicsListByFio;
 
     @RequestMapping(value = "/getByFio")
-    public String getByFio(@RequestParam(value = "fioInput") String fio,
-                                                            Model model){
+    public String getByFio(@RequestParam(value = "fioInput") String fio, Model model){
+
         technicsListByFio = new TechnicsDAO().findTechnicsByFio(fio);
+        if(technicsListByFio == null || technicsListByFio.size() == 0){
+            return "/errorPage";
+        }
         model.addAttribute("listOfTechnics", technicsListByFio);
         return "/technicsList";
     }

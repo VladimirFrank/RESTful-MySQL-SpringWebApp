@@ -23,11 +23,4 @@ public class AllTechnicsController {
         return "/technicsList";
     }
 
-    @RequestMapping("/")
-    public String getIndexPage(){
-        return "/index";
-    }
-
-
-
 }

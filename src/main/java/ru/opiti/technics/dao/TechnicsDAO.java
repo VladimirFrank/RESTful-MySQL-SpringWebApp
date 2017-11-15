@@ -38,13 +38,14 @@ public class TechnicsDAO {
         Session session = null;
         try{
             session = HibernateConnector.getInstance().getSession();
-            Query query = session.createQuery("FROM Technics WHERE holder = :fio");
-            query.setParameter("fio", fio);
+            Query query = session.createQuery("FROM Technics WHERE holder like :fio");
+            query.setParameter("fio", "%" + fio + "%");
             List queryList = query.list();
             if(queryList == null && queryList.isEmpty()){
                 return null;
             } else{
                 System.out.println("list " + queryList);
+                System.out.println(queryList.size());
                 return (List<Technics>) queryList;
             }
         } catch (Exception ex){
