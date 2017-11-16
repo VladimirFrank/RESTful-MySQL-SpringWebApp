@@ -38,7 +38,7 @@ public class TechnicsDAO {
         Session session = null;
         try{
             session = HibernateConnector.getInstance().getSession();
-            Query query = session.createQuery("FROM Technics WHERE holder like :fio");
+            Query query = session.createQuery("FROM Technics WHERE holder LIKE :fio");
             query.setParameter("fio", "%" + fio + "%");
             List queryList = query.list();
             if(queryList == null && queryList.isEmpty()){
@@ -57,14 +57,13 @@ public class TechnicsDAO {
     }
 
     // TODO TEST IT!
-    // TODO добавить поиск по части серийного номера
     // Получение списка техники по серийному номеру (возможно несколько позиций)
     public List<Technics> findTechnicsBySerialNumber(String sn){
         Session session = null;
         try{
             session = HibernateConnector.getInstance().getSession();
-            Query query = session.createQuery("FROM Technics WHERE serialNumber = :sn");
-            query.setParameter("serialNumber", sn);
+            Query query = session.createQuery("FROM Technics WHERE serialNumber LIKE :sn");
+            query.setParameter("serialNumber", "%" + sn + "%");
             List queryList = query.list();
             if(queryList == null && queryList.isEmpty()){
                 return null;
@@ -80,6 +79,7 @@ public class TechnicsDAO {
         }
     }
 
+    // Поиск техники по id
     public Technics findTechnicsById(int id){
         Session session = null;
         try{

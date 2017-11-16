@@ -10,13 +10,16 @@ import ru.opiti.technics.model.Technics;
 import java.util.List;
 
 @Controller
-public class GetSerialNumberController {
+public class GetBySerialNumberController {
 
     private List<Technics> technicsListBySn;
 
     @RequestMapping("/getBySerialNumber")
     public String getBySerialNumber(@RequestParam(value = "snInput") String serialNumber, Model model){
         technicsListBySn = new TechnicsDAO().findTechnicsByFio(serialNumber);
+        if(technicsListBySn == null || technicsListBySn.size() == 0){
+            return "/errorPage";
+        }
         model.addAttribute("listOfTechnics", technicsListBySn);
         return "/technicsList";
 
