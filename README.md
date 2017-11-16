@@ -1,12 +1,12 @@
 RESTful http сервис для работы с MySQL БД через веб интерфейс.
 
 Технологии:
-Spring boot 1.4
-Spring MVC 
-Data Base layer: Hibernate 4, 
-View layer: Thymeleaf
-Core: Java 8 SE
-MySQL
+1. Spring boot 1.4
+2. Spring MVC 
+3. Hibernate 4, 
+4. Thymeleaf
+5. Java 8 SE
+6. MySQL
 
 Реализовано:
 1. Просмотр всех позиций из БД.
