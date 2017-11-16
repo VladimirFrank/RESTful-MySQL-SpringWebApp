@@ -1,4 +1,4 @@
-RESTful http сервис для работы в MySQL Data base через веб интерфейс.
+RESTful http сервис для работы с MySQL БД через веб интерфейс.
 
 Технологии:
 1. Spring boot
