@@ -7,18 +7,51 @@
 
 </head>
 <body>
-<div>
-    <form action="/checkEdit" method="POST">
-        <input type="text" name="id" contenteditable="false" th:value="${technicsToEdit.id}"/>
-        <input type="text" name="deviceType" th:value="${technics.deviceType}" />
-        <input type="text" name="deviceName"  th:value="${technics.deviceName}" />
-        <input type="text" name="serialNumber"  th:value="${technics.serialNumber}" />
-        <input type="text" name="inventoryNumber"  th:value="${technics.inventoryNumber}" />
-        <input type="text" name="holder"  th:value="${technics.holder}" />
-        <input type="text" name="propertyOwner"  th:value="${technics.propertyOwner}" />
-        <input type="text" name="description"  th:value="${technics.description}" />
-        <input type="text" name="date"  th:value="${technics.date}" />
-        <input type="text" name="location"  th:value="${technics.location}" />
+<div class="editPageWrapper">
+    <form action="/checkEdit" method="POST" class="editForm">
+        <div class="editField">
+            <label for="id">Id</label>
+            <input type="text" name="id" class="editInput" id="id" th:value="${technicsToEdit.id}" readonly="readonly" />
+        </div>
+        <div class="editField">
+            <label for="device_type">Тип оборудования</label>
+            <input type="text" name="deviceType" class="editInput" id="device_type" th:value="${technicsToEdit.deviceType}" />
+        </div>
+        <div class="editField">
+            <label for="device_name">Наименование оборудования</label>
+            <input type="text" name="deviceName"  class="editInput" id="device_name" th:value="${technicsToEdit.deviceName}" />
+        </div>
+        <div class="editField">
+            <label for="serial_number">Серийный номер</label>
+            <input type="text" name="serialNumber" class="editInput" id="serial_number" th:value="${technicsToEdit.serialNumber}" />
+        </div>
+        <div class="editField">
+            <label for="inventory_number">Инвенторный номер</label>
+            <input type="text" name="inventoryNumber" class="editInput" id="inventory_number" th:value="${technicsToEdit.inventoryNumber}" />
+        </div>
+        <div class="editField">
+            <label for="holder">ФИО</label>
+            <input type="text" name="holder" class="editInput" id="holder" th:value="${technicsToEdit.holder}" />
+        </div>
+        <div class="editField">
+            <label for="property_owner">В собственности</label>
+            <input type="text" name="propertyOwner" class="editInput" id="property_owner" th:value="${technicsToEdit.propertyOwner}" />
+        </div>
+        <div class="editField">
+            <label for="description">Коментарий</label>
+            <input type="text" name="description" class="editInput" id="description" th:value="${technicsToEdit.description}" />
+        </div>
+        <div class="editField">
+            <label for="date">Дата</label>
+            <input type="text" name="date" class="editInput" id="date" th:value="${technicsToEdit.date}" />
+        </div>
+        <div class="editField">
+            <label for="location">Местонахождения</label>
+            <input type="text" name="location" class="editInput" id="location" th:value="${technicsToEdit.location}" />
+        </div>
+        <div class="editField">
+            <input type="submit" value="сохранить"/>
+        </div>
     </form>
 </div>
 </body>

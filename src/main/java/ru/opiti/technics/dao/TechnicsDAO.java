@@ -103,12 +103,22 @@ public class TechnicsDAO {
 
     public void updateTechnics(Technics technics){
         Session session = null;
+        Transaction transaction = null;
         try{
             session = HibernateConnector.getInstance().getSession();
-            session.saveOrUpdate(technics);
+            transaction = session.beginTransaction();
+            transaction.setTimeout(5);
+
+            session.update(technics);
+            transaction.commit();
             session.flush();
-        } catch(Exception ex){
-            ex.printStackTrace();
+        } catch(RuntimeException ex){
+            try{
+                transaction.rollback();
+            } catch (RuntimeException rbe){
+                System.out.println("Couldn't roll back transaction" + rbe);
+            }
+            throw ex;
         } finally {
             session.close();
         }

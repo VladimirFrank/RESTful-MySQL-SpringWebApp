@@ -1,25 +1,46 @@
-html{
+html {
     font-family: Verdana, Georgia, sans-serif;
+    font-size: 20px;
 }
 
-h1, h2, h3{
+h1, h2, h3 {
     font-size:16px;
     color: #696969;
 }
 
-body{
-
+body {
+    background-color: yellow;
     width: 80%;
 
 }
 
-#techTable{
+#techTable {
     border: 2px solid #000;
 
 }
 
-.tableRow td{
+.tableRow td {
     border: 1px solid #000;
     border-collapse: collapse;
 
+}
+
+.editPageWrapper {
+    background-color: yellow;
+}
+
+.editField {
+    text-align: right;
+    float: left;
+    padding: 3% 3% 3% 0;
+    background-color: #696969;
+}
+
+.editInput {
+    width: 700px;
+    line-height: 1.5 em;
+}
+
+.editField label {
+    line-height: 1.5 em;
 }

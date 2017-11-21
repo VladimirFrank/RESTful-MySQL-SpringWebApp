@@ -24,7 +24,7 @@
                 <td th:text="${technics.description}">description</td>
                 <td th:text="${technics.date}">date</td>
                 <td th:text="${technics.location}">location</td>
-                <td><a href="">Редактировать</a>
+                <td><a th:href="@{/edit(id=${technics.id})}">Редактировать</a>
                     <a href="">Удалить</a>
                 </td>
 
