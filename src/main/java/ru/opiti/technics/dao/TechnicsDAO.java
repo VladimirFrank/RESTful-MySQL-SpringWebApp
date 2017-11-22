@@ -1,6 +1,7 @@
 package ru.opiti.technics.dao;
 
 import org.hibernate.Query;
+import org.hibernate.ReplicationMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ru.opiti.technics.dbConfig.HibernateConnector;
@@ -108,10 +109,8 @@ public class TechnicsDAO {
             session = HibernateConnector.getInstance().getSession();
             transaction = session.beginTransaction();
             transaction.setTimeout(5);
-
-            session.update(technics);
+            session.saveOrUpdate(technics);
             transaction.commit();
-            session.flush();
         } catch(RuntimeException ex){
             try{
                 transaction.rollback();
@@ -140,7 +139,7 @@ public class TechnicsDAO {
         }
     }
 
-    public void deleteTechnics(int id){
+    public boolean deleteTechnics(int id){
         Session session = null;
         try{
             session = HibernateConnector.getInstance().getSession();
@@ -149,8 +148,10 @@ public class TechnicsDAO {
             createQuery.setParameter("id", id);
             createQuery.executeUpdate();
             beginTransaction.commit();
+            return true;
         } catch (Exception ex){
             ex.printStackTrace();
+            return false;
         } finally {
             session.close();
         }

@@ -35,6 +35,7 @@ public class CheckEditController {
         updatableTechnics.setDate(date);
         updatableTechnics.setLocation(location);
         System.out.println(updatableTechnics.toString());
+
         technicsDAO.updateTechnics(updatableTechnics);
         return "/successfulUpdate";
     }

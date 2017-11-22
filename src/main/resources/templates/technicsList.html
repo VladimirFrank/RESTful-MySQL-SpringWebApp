@@ -25,10 +25,8 @@
                 <td th:text="${technics.date}">date</td>
                 <td th:text="${technics.location}">location</td>
                 <td><a th:href="@{/edit(id=${technics.id})}">Редактировать</a>
-                    <a href="">Удалить</a>
+                    <a class="delete" th:href="@{/deleteTechnics(id=${technics.id})}">Удалить</a>
                 </td>
-
-
             </tr>
         </table>
     </div>
@@ -37,7 +35,21 @@
 </div>
 <!-- /.container -->
 
+<script type="text/javascript">
+    var deleteLinks = document.querySelectorAll('.delete');
 
+    for (var i = 0; i < deleteLinks.length; i++){
+        deleteLinks[i].addEventListener('click', function(event){
+            event.preventDefault();
+
+            var choice = confirm(this.getAttribute('data-confirm'));
+
+            if(choice){
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+</script>
 
 </body>
 </html>

@@ -135,6 +135,8 @@ public class Technics implements Serializable {
         this.location = location;
     }
 
+
+
     @Override
     public String toString() {
         return "Technics{" +
