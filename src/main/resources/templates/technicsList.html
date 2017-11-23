@@ -12,7 +12,22 @@
 
 
     <div>
-        <table id="techTable">
+        <table class="techTable">
+            <thead>
+            <tr class="tableRow">
+                <td>ID</td>
+                <td>Тип оборудования</td>
+                <td>Название оборудования</td>
+                <td>Серийный номер</td>
+                <td>Инвентарный номер</td>
+                <td>ФИО</td>
+                <td>Собственность</td>
+                <td>Коментарий</td>
+                <td>Дата</td>
+                <td>Расположение</td>
+                <td>Действия</td>
+            </tr>
+            </thead>
             <tr th:each="technics : ${listOfTechnics}" class="tableRow">
                 <td th:text="${technics.id}">id</td>
                 <td th:text="${technics.deviceType}">name</td>
@@ -34,22 +49,19 @@
     <h3><a href="/">На главную</a></h3>
 </div>
 <!-- /.container -->
+<script th:inline="javascript">
+    /*<![CDATA[*/
 
-<script type="text/javascript">
-    var deleteLinks = document.querySelectorAll('.delete');
-
-    for (var i = 0; i < deleteLinks.length; i++){
-        deleteLinks[i].addEventListener('click', function(event){
-            event.preventDefault();
-
-            var choice = confirm(this.getAttribute('data-confirm'));
-
-            if(choice){
-                window.location.href = this.getAttribute('href');
-            }
-        });
+    var elems = document.getElementsByClassName('delete');
+    console.log(elems)
+    var confirmIt = function (e) {
+        if (!confirm('Уверены, что хотите удалить?')) e.preventDefault();
+    };
+    for (var i = 0, l = elems.length; i < l; i++) {
+        elems[i].addEventListener('click', confirmIt, false);
     }
-</script>
 
+    /*]]>*/
+</script>
 </body>
 </html>

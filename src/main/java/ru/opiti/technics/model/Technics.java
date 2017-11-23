@@ -136,6 +136,43 @@ public class Technics implements Serializable {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Technics technics = (Technics) o;
+
+        if (!id.equals(technics.id)) return false;
+        if (deviceType != null ? !deviceType.equals(technics.deviceType) : technics.deviceType != null) return false;
+        if (deviceName != null ? !deviceName.equals(technics.deviceName) : technics.deviceName != null) return false;
+        if (serialNumber != null ? !serialNumber.equals(technics.serialNumber) : technics.serialNumber != null)
+            return false;
+        if (inventoryNumber != null ? !inventoryNumber.equals(technics.inventoryNumber) : technics.inventoryNumber != null)
+            return false;
+        if (holder != null ? !holder.equals(technics.holder) : technics.holder != null) return false;
+        if (propertyOwner != null ? !propertyOwner.equals(technics.propertyOwner) : technics.propertyOwner != null)
+            return false;
+        if (description != null ? !description.equals(technics.description) : technics.description != null)
+            return false;
+        if (date != null ? !date.equals(technics.date) : technics.date != null) return false;
+        return location != null ? location.equals(technics.location) : technics.location == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + (deviceType != null ? deviceType.hashCode() : 0);
+        result = 31 * result + (deviceName != null ? deviceName.hashCode() : 0);
+        result = 31 * result + (serialNumber != null ? serialNumber.hashCode() : 0);
+        result = 31 * result + (inventoryNumber != null ? inventoryNumber.hashCode() : 0);
+        result = 31 * result + (holder != null ? holder.hashCode() : 0);
+        result = 31 * result + (propertyOwner != null ? propertyOwner.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        return result;
+    }
 
     @Override
     public String toString() {

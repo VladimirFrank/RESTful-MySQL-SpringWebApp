@@ -144,7 +144,7 @@ public class TechnicsDAO {
         try{
             session = HibernateConnector.getInstance().getSession();
             Transaction beginTransaction = session.beginTransaction();
-            Query createQuery = session.createQuery("delete from Technics t where t.id =: id");
+            Query createQuery = session.createQuery("delete from Technics t where t.id = :id");
             createQuery.setParameter("id", id);
             createQuery.executeUpdate();
             beginTransaction.commit();

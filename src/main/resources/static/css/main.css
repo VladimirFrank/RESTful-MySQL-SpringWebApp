@@ -9,14 +9,24 @@ h1, h2, h3 {
 }
 
 body {
-    background-color: yellow;
-    width: 80%;
 
 }
 
-#techTable {
-    border: 2px solid #000;
+a {
+    text-decoration: none;
+    color: #6C9BE0;
+    opacity: 0.9;
+}
 
+a:hover{
+    color: #3064B5;
+    opacity: 1;
+}
+
+.techTable {
+    border: 2px solid #000;
+    width: 100%;
+    font-size: 0.8em;
 }
 
 .tableRow td {
@@ -38,9 +48,11 @@ body {
 
 .editInput {
     width: 700px;
-    line-height: 1.5 em;
+    line-height: 1.5em;
 }
 
 .editField label {
-    line-height: 1.5 em;
+    line-height: 1.5em;
 }
+
+
