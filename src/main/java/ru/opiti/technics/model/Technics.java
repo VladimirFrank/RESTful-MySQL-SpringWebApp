@@ -25,7 +25,7 @@ public class Technics implements Serializable {
     public Technics(String deviceType, String deviceName,
                     String serialNumber, String inventoryNumber,
                     String holder, String propertyOwner, String description,
-                    String date){
+                    String date, String location){
         this.deviceType = deviceType;
         this.deviceName = deviceName;
         this.serialNumber = serialNumber;
@@ -34,6 +34,7 @@ public class Technics implements Serializable {
         this.propertyOwner = propertyOwner;
         this.description = description;
         this.date = date;
+        this.location = location;
 
     }
 

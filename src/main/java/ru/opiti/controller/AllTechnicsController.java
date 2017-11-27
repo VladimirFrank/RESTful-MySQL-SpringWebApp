@@ -10,6 +10,7 @@ import ru.opiti.technics.model.Technics;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class AllTechnicsController {

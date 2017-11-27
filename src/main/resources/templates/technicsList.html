@@ -11,20 +11,78 @@
 <div class="container">
 
 
+    <div class="header">
+        <span><a href="/addPosition">Добавить позицию</a></span>
+        <span><a href="">Еще какая-то ссылка</a></span>
+    </div>
+
     <div>
         <table class="techTable">
             <thead>
             <tr class="tableRow">
                 <td>ID</td>
-                <td>Тип оборудования</td>
-                <td>Название оборудования</td>
-                <td>Серийный номер</td>
-                <td>Инвентарный номер</td>
-                <td>ФИО</td>
-                <td>Собственность</td>
-                <td>Коментарий</td>
-                <td>Дата</td>
-                <td>Расположение</td>
+                <td>
+                    <span>Тип оборудования</span>
+                    <form method="post" action="/filterByDeviceType">
+                        <input type="text" name="deviceType" class="filterInput"/>
+                        <input type="submit" value="Фильтровать"/>
+                    </form>
+                </td>
+                <td>
+                    <span>Название оборудования</span>
+                    <form method="post" action="/filterByDeviceName">
+                        <input type="text" name="deviceName" class="filterInput"/>
+                        <input type="submit" value="Фильтровать"/>
+                    </form>
+                </td>
+                <td>
+                    <span>Серийный номер</span>
+                    <form method="post" action="/filterBySerialNumber">
+                        <input type="text" name="serialNumber" class="filterInput"/>
+                        <input type="submit" value="Фильтровать"/>
+                    </form>
+                </td>
+                <td>Инвентарный номер
+                    <form method="post" action="/filterByInventoryNumber">
+                        <input type="text" name="inventoryNumber" class="filterInput"/>
+                        <input type="submit" value="Фильтровать"/>
+                    </form>
+                </td>
+                <td>
+                    <span>ФИО</span>
+                    <form method="post" action="/filterByHolder">
+                        <input type="text" name="holder" class="filterInput"/>
+                        <input type="submit" value="Фильтровать"/>
+                    </form>
+                </td>
+                <td>
+                    <span>Собственность</span>
+                    <form method="post" action="/filterByPropertyOwner">
+                        <input type="text" name="propertyOwner" class="filterInput"/>
+                        <input type="submit" value="Фильтровать"/>
+                    </form>
+                </td>
+                <td>
+                    <span>Коментарий</span>
+                    <form method="post" action="/filterByDescription">
+                        <input type="text" name="description" class="filterInput"/>
+                        <input type="submit" value="Фильтровать"/>
+                    </form>
+                </td>
+                <td>
+                    <span>Дата</span>
+                    <form method="post" action="/filterByDate">
+                        <input type="text" name="date" class="filterInput"/>
+                        <input type="submit" value="Фильтровать"/>
+                    </form>
+                </td>
+                <td>
+                    <span>Расположение</span>
+                    <form method="post" action="/filterByLocation">
+                        <input type="text" name="location" class="filterInput"/>
+                        <input type="submit" value="Фильтровать"/>
+                    </form>
+                </td>
                 <td>Действия</td>
             </tr>
             </thead>

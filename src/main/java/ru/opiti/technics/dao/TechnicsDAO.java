@@ -123,7 +123,7 @@ public class TechnicsDAO {
         }
     }
 
-    public Technics addTechnics(Technics technics){
+    public boolean addTechnics(Technics technics){
         Session session = null;
         Transaction transaction = null;
         try{
@@ -132,10 +132,10 @@ public class TechnicsDAO {
             transaction = session.beginTransaction();
             session.save(technics);
             transaction.commit();
-            return technics;
+            return true;
         } catch (Exception ex){
             ex.printStackTrace();
-            return null;
+            return false;
         }
     }
 
