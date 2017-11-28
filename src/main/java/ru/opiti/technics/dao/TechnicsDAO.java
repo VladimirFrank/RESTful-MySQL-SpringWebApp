@@ -33,31 +33,7 @@ public class TechnicsDAO {
     }
 
     // TODO TEST IT!
-    // TODO добавить поиск по части ФИО (по фамилии, например)
-    // получение списка техники по ФИО держателя
-    public List<Technics> findTechnicsByFio(String fio){
-        Session session = null;
-        try{
-            session = HibernateConnector.getInstance().getSession();
-            Query query = session.createQuery("FROM Technics WHERE holder LIKE :fio");
-            query.setParameter("fio", "%" + fio + "%");
-            List queryList = query.list();
-            if(queryList == null && queryList.isEmpty()){
-                return null;
-            } else{
-                System.out.println("list " + queryList);
-                System.out.println(queryList.size());
-                return (List<Technics>) queryList;
-            }
-        } catch (Exception ex){
-            ex.printStackTrace();
-            return null;
-        } finally {
-            session.close();
-        }
-    }
-
-    // TODO TEST IT!
+    // Возможно оно и не нужно
     // Получение списка техники по серийному номеру (возможно несколько позиций)
     public List<Technics> findTechnicsBySerialNumber(String sn){
         Session session = null;
@@ -80,28 +56,10 @@ public class TechnicsDAO {
         }
     }
 
-    // Поиск техники по id
-    public Technics findTechnicsById(int id){
-        Session session = null;
-        try{
-            session = HibernateConnector.getInstance().getSession();
-            Query query = session.createQuery("from Technics t where t.id = :id");
-            query.setParameter("id", id);
-
-            List queryList = query.list();
-            if(queryList == null && queryList.isEmpty()){
-                return null;
-            } else{
-                return (Technics) queryList.get(0);
-            }
-        } catch (Exception ex){
-            ex.printStackTrace();
-            return null;
-        } finally {
-            session.close();
-        }
-    }
-
+    /**
+     * Make changes in @param object and UPDATE that element in data base.
+     * @param technics
+     */
     public void updateTechnics(Technics technics){
         Session session = null;
         Transaction transaction = null;
@@ -123,6 +81,11 @@ public class TechnicsDAO {
         }
     }
 
+    /**
+     * Add element 'technics' in data base.
+     * @param technics
+     * @return 'true' if successful or 'false' not.
+     */
     public boolean addTechnics(Technics technics){
         Session session = null;
         Transaction transaction = null;
@@ -139,6 +102,11 @@ public class TechnicsDAO {
         }
     }
 
+    /**
+     * Delete element from data base by id.
+     * @param id
+     * @return 'true' if successful or 'false' if element not deleted.
+     */
     public boolean deleteTechnics(int id){
         Session session = null;
         try{
@@ -157,5 +125,96 @@ public class TechnicsDAO {
         }
     }
 
+    /**
+     * Filtering methods
+     */
 
+
+    /**
+     * Find and return one element from data base by ID
+     * @param id
+     * @return Technics or null if element not exist.
+     */
+    public Technics findTechnicsById(int id){
+        Session session = null;
+        try{
+            session = HibernateConnector.getInstance().getSession();
+            Query query = session.createQuery("from Technics t where t.id = :id");
+            query.setParameter("id", id);
+
+            List queryList = query.list();
+            if(queryList == null && queryList.isEmpty()){
+                return null;
+            } else{
+                return (Technics) queryList.get(0);
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+
+    /**
+     * Find one or many element that match or contain 'fio'.
+     * @param fio
+     * @return List Technics or null
+     */
+    public List<Technics> findTechnicsByFio(String fio){
+        Session session = null;
+        try{
+            session = HibernateConnector.getInstance().getSession();
+            Query query = session.createQuery("FROM Technics WHERE holder LIKE :fio");
+            query.setParameter("fio", "%" + fio + "%");
+            List queryList = query.list();
+            if(queryList == null && queryList.isEmpty()){
+                return null;
+            } else{
+                System.out.println("list " + queryList);
+                System.out.println(queryList.size());
+                return (List<Technics>) queryList;
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+
+    // TODO Сделать универсальный метод для выборки по всем столбцам, кроме ID.
+    public List<Technics> findTechnics(String paramToFind, String searchItem){
+        StringBuffer queryStringBuffer = new StringBuffer();
+
+    }
+
+    private String createQueryForTechnicsFilter(String paramToFind){
+        if(paramToFind.equals("deviceType")){
+            return "FROM Technics WHERE device_type LIKE :deviceType";
+        }
+    }
+
+
+    public List<Technics> findTechnicsByDeviceType(String deviceType){
+        Session session = null;
+        try{
+            session = HibernateConnector.getInstance().getSession();
+            Query query = session.createQuery("FROM Technics WHERE device_type LIKE :deviceType");
+            query.setParameter("deviceType", "%" + deviceType + "%");
+            List queryList = query.list();
+            if(queryList == null && queryList.isEmpty()){
+                return null;
+            } else{
+                System.out.println("list " + queryList);
+                System.out.println(queryList.size());
+                return (List<Technics>) queryList;
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+        }
+    }
 }
