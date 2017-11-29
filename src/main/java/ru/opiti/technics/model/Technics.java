@@ -35,7 +35,6 @@ public class Technics implements Serializable {
         this.description = description;
         this.date = date;
         this.location = location;
-
     }
 
     public Technics(String holder){

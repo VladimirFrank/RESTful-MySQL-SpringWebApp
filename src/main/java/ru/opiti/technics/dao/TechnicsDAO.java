@@ -184,17 +184,49 @@ public class TechnicsDAO {
     }
 
     // TODO Сделать универсальный метод для выборки по всем столбцам, кроме ID.
-    public List<Technics> findTechnics(String paramToFind, String searchItem){
-        StringBuffer queryStringBuffer = new StringBuffer();
-
-    }
-
-    private String createQueryForTechnicsFilter(String paramToFind){
-        if(paramToFind.equals("deviceType")){
-            return "FROM Technics WHERE device_type LIKE :deviceType";
+    // TODO looks ugly, make it beautiful.
+    public List<Technics> findTechnics(ColumnName columnName, String paramToFind){
+        Session session = null;
+        Query query = null;
+        try{
+            session = HibernateConnector.getInstance().getSession();
+            if(columnName == ColumnName.DEVICE_TYPE){
+                query = session.createQuery("FROM Technics WHERE device_type LIKE :paramToFind");
+            } else if(columnName == ColumnName.DEVICE_NAME){
+                query = session.createQuery("FROM Technics WHERE device_name LIKE :paramToFind");
+            } else if(columnName == ColumnName.SERIAL_NUMBER){
+                query = session.createQuery("FROM Technics WHERE serial_number LIKE :paramToFind");
+            } else if(columnName == ColumnName.INVENTORY_NUMBER){
+                query = session.createQuery("FROM Technics WHERE inventory_number LIKE :paramToFind");
+            } else if(columnName == ColumnName.HOLDER){
+                query = session.createQuery("FROM Technics WHERE holder LIKE :paramToFind");
+            } else if(columnName == ColumnName.PROPERTY_OWNER){
+                query = session.createQuery("FROM Technics WHERE property_owner LIKE :paramToFind");
+            } else if(columnName == ColumnName.DESCRIPTION){
+                query = session.createQuery("FROM Technics WHERE description LIKE :paramToFind");
+            } else if(columnName == ColumnName.DATE){
+                query = session.createQuery("FROM Technics WHERE date LIKE :paramToFind");
+            } else if(columnName == ColumnName.LOCATION){
+                query = session.createQuery("FROM Technics WHERE location LIKE :paramToFind");
+            } else{
+                return null;
+            }
+            query.setParameter("paramToFind", "%" + paramToFind + "%");
+            List queryList = query.list();
+            if(queryList == null && queryList.isEmpty()){
+                return null;
+            } else{
+                System.out.println("list " + queryList);
+                System.out.println(queryList.size());
+                return (List<Technics>) queryList;
+            }
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        } finally {
+            session.close();
         }
     }
-
 
     public List<Technics> findTechnicsByDeviceType(String deviceType){
         Session session = null;
